@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:youtube_app/video_detail_page.dart';
 
-void main() {
-  runApp(MyApp());
-}
+
 
 class MyApp extends StatelessWidget {
   final items = List<String>.generate(10000, (i) => "Item $i");
@@ -86,8 +84,12 @@ class MyApp extends StatelessWidget {
                     itemCount: items.length,
                     itemBuilder: (context, index) {
                       return ListTile(
-                        onTap: () {
-
+                        onTap: () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => VidelDetailPage()),
+                          );
                         },
                         contentPadding: EdgeInsets.all(8),
                         leading: Image.network(
@@ -127,3 +129,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
